@@ -4,13 +4,17 @@ WORKDIR /app
 
 COPY go.mod ./
 
-RUN go mod download
+RUN go mod tidy
+
+RUN go get github.com/gin-gonic/gin
 
 COPY *.go ./
 
-RUN GOARCH=amd64 GOOS=linux go build -o /get-time
+RUN GOARCH=amd64 GOOS=linux go build -o get-time
 
 FROM golang:1.18-alpine
+
+WORKDIR /app
 
 COPY --from=builder /app/get-time /get-time
 

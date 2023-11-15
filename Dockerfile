@@ -8,6 +8,8 @@ RUN go mod tidy
 
 RUN go get github.com/gin-gonic/gin
 
+RUN go get github.com/prometheus/client_golang/prometheus/promhttp
+
 COPY *.go ./
 
 RUN GOARCH=amd64 GOOS=linux go build -o get-time

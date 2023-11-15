@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func getTime(c *gin.Context) {
@@ -15,6 +16,8 @@ func main() {
 
 	router := gin.Default()
 	router.GET("/", getTime)
+
+	router.GET("/metrics", gin.WrapH(promhttp.Handler()))
 
 	router.Run(":8080")
 }

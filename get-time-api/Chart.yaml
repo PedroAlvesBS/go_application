@@ -1,0 +1,10 @@
+---
+apiVersion: v2
+description: This is a chart to deploy get-time-api made in Golang
+
+# Regarding the application
+appVersion: "1.0.0"
+name: my-app
+
+# Regarding the Chart
+version: 1.0.0
